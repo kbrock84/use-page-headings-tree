@@ -14,6 +14,10 @@ npm install --save use-page-headings-tree
 
 ## Example Usage
 
+**[Check out the example](https://kbrock84.github.io/use-page-headings-tree/)
+that uses the following code or
+[check out the source code](https://github.com/kbrock84/use-page-headings-tree/blob/master/example/src/App.js)!**
+
 Get a list of heading nodes
 
 ```jsx
