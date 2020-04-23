@@ -41,7 +41,7 @@ usePageHeadingsTree(pageHeadingNodes, setPageHeadingTree, false);
 ```
 
 
-### Use the tree data (recursion is the simplest method)
+Use the tree data (recursion is the simplest method)
 
 ```jsx
 
@@ -57,7 +57,7 @@ const renderNodeList = (node) => (
 ```
 
 
-### `usePageHeadingsTree` hook
+## `usePageHeadingsTree` hook
 
 
 ```tsx
@@ -71,13 +71,16 @@ const renderNodeList = (node) => (
 ```
 
 
-#### Param List
+### Param List
 
 1.  `pageHeadingNodes: NodeList` -> NodeList as returned by `Element.querySelectorAll`
 2.  `callback: (treeNodes: TreeNode[]) => void` -> callback to set an array of `TreeNodes` (see below)
 3.  `defaultToExpand: bool` -> default value for `TreeNode.expanded` on all tree nodes.
 
-### Sample `TreeNode`
+
+
+
+## Sample `TreeNode`
 
 ```jsx
 {
@@ -110,6 +113,9 @@ const renderNodeList = (node) => (
 }
 
 ```
+
+
+
 
 ## License
 
