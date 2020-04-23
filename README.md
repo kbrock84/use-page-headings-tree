@@ -10,24 +10,91 @@
 npm install --save use-page-headings-tree
 ```
 
-## Usage
+## Use
+
+### Get a list of heading nodes
 
 ```jsx
-import React, { Component } from 'react'
+useEffect(() => {
+	const headingNodes = headingsContainerRef.current.querySelectorAll(
+		"h2,h3,h4,h5,h6"
+	);
+	setPageHedingNodes(headingNodes);
+}, []);
+```
 
-import { useMyHook } from 'use-page-headings-tree'
+### Pass the node list, a callback to set the tree data and weather you would like the expanded attribute to be `true` or `false` by default
 
-const Example = () => {
-  const example = useMyHook()
-  return (
-    <div>{example}</div>
-  )
+```jsx
+usePageHeadingsTree(pageHeadingNodes, setPageHeadingTree, false);
+```
+
+### Use the tree data (recursion is the simplest method)
+
+```jsx
+const renderNodeList = (node) => (
+	<>
+		<li>{node.text}</li>
+		{node.childNodes.length > 0 ? (
+			<ul key={node.id}>{node.childNodes.map(renderNodeList)}</ul>
+		) : null}
+	</>
+);
+```
+
+### `usePageHeadingsTree hook definition
+
+```tsx
+  usePageHeadingsTree = (
+    pageHeadingNodes: NodeList,
+    callback: (treeNodes: TreeNodes) => void,
+    defaultToExpand: bool,
+    ) => { ... }
+```
+
+#### Param List
+
+1.  `pageHeadingNodes: NodeList` -> NodeList as returned by `Element.querySelectorAll`
+2.  `callback: (treeNodes: TreeNodes) => void` -> callback to set an array of `TreeNodes` (see below)
+3.  `defaultToExpand: bool` -> default value for `TreeNode.expanded` on all tree nodes.
+
+### TreeNode
+
+```jsx
+{
+  // the id from the header element (if any)
+  // useful for generating a linked table of contents
+  id: "my-fancy-header-id",
+
+  // the text inside the header element
+  text: "some header text",
+
+  // expanded attribute
+  // useful for creating expand/collapse table of contents
+  // default for all nodes set as third argument of usePageHeadingsTree
+  expanded: true,
+
+  // the total number of nested children contained in any given node
+  childrenCount: 3,
+
+  // root id for node
+  rootId: "generated unique id",
+
+  // a copy of the heading element from the original NodeList
+  element: heading,
+
+  // a list of child nodes
+  childNodes: [],
+
+  // the index of the node from the original node list
+  index: index,
 }
+
 ```
 
 ## License
 
-MIT © [@kbrock84](https://github.com/@kbrock84)
+MIT © [kbrock84](https://github.com/@kbrock84)
 
 ---
 
