@@ -4,34 +4,47 @@
 
 [![NPM](https://img.shields.io/npm/v/use-page-headings-tree.svg)](https://www.npmjs.com/package/use-page-headings-tree) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+
 ## Install
 
 ```bash
+
 npm install --save use-page-headings-tree
+
 ```
 
-## Use
+## Example Usage
 
-### Get a list of heading nodes
+
+Get a list of heading nodes
+
 
 ```jsx
+
 useEffect(() => {
 	const headingNodes = headingsContainerRef.current.querySelectorAll(
 		"h2,h3,h4,h5,h6"
 	);
 	setPageHedingNodes(headingNodes);
 }, []);
+
 ```
 
-### Pass the node list, a callback to set the tree data and weather you would like the expanded attribute to be `true` or `false` by default
+
+Pass the node list, a callback to set the tree data and weather you would like the expanded attribute to be `true` or `false` by default
+
 
 ```jsx
+
 usePageHeadingsTree(pageHeadingNodes, setPageHeadingTree, false);
+
 ```
+
 
 ### Use the tree data (recursion is the simplest method)
 
 ```jsx
+
 const renderNodeList = (node) => (
 	<>
 		<li>{node.text}</li>
@@ -40,25 +53,31 @@ const renderNodeList = (node) => (
 		) : null}
 	</>
 );
+
 ```
 
-### `usePageHeadingsTree hook definition
+
+### `usePageHeadingsTree` hook
+
 
 ```tsx
+
   usePageHeadingsTree = (
     pageHeadingNodes: NodeList,
     callback: (treeNodes: TreeNodes) => void,
     defaultToExpand: bool,
     ) => { ... }
+		
 ```
+
 
 #### Param List
 
 1.  `pageHeadingNodes: NodeList` -> NodeList as returned by `Element.querySelectorAll`
-2.  `callback: (treeNodes: TreeNodes) => void` -> callback to set an array of `TreeNodes` (see below)
+2.  `callback: (treeNodes: TreeNode[]) => void` -> callback to set an array of `TreeNodes` (see below)
 3.  `defaultToExpand: bool` -> default value for `TreeNode.expanded` on all tree nodes.
 
-### TreeNode
+### Sample `TreeNode`
 
 ```jsx
 {
