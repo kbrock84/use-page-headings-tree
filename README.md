@@ -16,7 +16,7 @@ npm install --save use-page-headings-tree
 
 **[Check out the example](https://kbrock84.github.io/use-page-headings-tree/)
 that uses the following code or
-[check out the source code](https://github.com/kbrock84/use-page-headings-tree/blob/master/example/src/App.js)!**
+[check out the example source](https://github.com/kbrock84/use-page-headings-tree/blob/master/example/src/App.js)!**
 
 Get a list of heading nodes
 
@@ -25,7 +25,7 @@ useEffect(() => {
 	const headingNodes = headingsContainerRef.current.querySelectorAll(
 		"h2,h3,h4,h5,h6"
 	);
-	setPageHedingNodes(headingNodes);
+	setPageHeadingNodes(headingNodes);
 }, []);
 ```
 
