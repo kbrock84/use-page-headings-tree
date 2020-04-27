@@ -54,7 +54,7 @@ const renderNodeList = (node) => (
 
   usePageHeadingsTree = (
     pageHeadingNodes: NodeList,
-    callback: (treeNodes: TreeNodes) => void,
+    callback: (treeNodes: TreeNode[]) => void,
     defaultToExpand: bool,
     ) => { ... }
 
