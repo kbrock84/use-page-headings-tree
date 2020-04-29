@@ -16,12 +16,12 @@ const SomeHeadings = () => {
 	usePageHeadingsTree(pageHeadingNodes, setPageHeadingTree, false);
 
 	const renderNodeList = (node) => (
-		<>
-			<li>{node.text}</li>
+		<li key={node.id}>
+			{node.text}
 			{node.childNodes.length > 0 ? (
-				<ul key={node.id}>{node.childNodes.map(renderNodeList)}</ul>
+				<ul>{node.childNodes.map(renderNodeList)}</ul>
 			) : null}
-		</>
+		</li>
 	);
 
 	return (

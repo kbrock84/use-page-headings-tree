@@ -39,12 +39,13 @@ Use the tree data (recursion is the simplest method)
 
 ```jsx
 const renderNodeList = (node) => (
-	<>
-		<li>{node.text}</li>
-		{node.childNodes.length > 0 ? (
-			<ul key={node.id}>{node.childNodes.map(renderNodeList)}</ul>
-		) : null}
-	</>
+		<li key={node.id}>
+			{node.text}
+			{node.childNodes.length > 0 ? (
+				<ul>{node.childNodes.map(renderNodeList)}</ul>
+			) : null}
+		</li>
+	);
 );
 ```
 

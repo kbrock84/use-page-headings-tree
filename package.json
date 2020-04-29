@@ -1,6 +1,6 @@
 {
 	"name": "use-page-headings-tree",
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"description": "A React hook to get tree data from a list of heading nodes",
 	"author": "kbrock84",
 	"license": "MIT",
